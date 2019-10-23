@@ -58,6 +58,7 @@ users.post("/login", (req, res) => {
           let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
             expiresIn: 1440
           });
+          console.log('token', token);
           res.send(token);
         }
       } else {
