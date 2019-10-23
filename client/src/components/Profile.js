@@ -55,7 +55,7 @@ toggelModal=() =>{
 
     }
     else{
-      const token = localStorage.usertoken;
+      const token = localStorage.getItem('usertoken');
       const decoded = jwt_decode(token);
       email = decoded.email;
       first_name = decoded.first_name;
@@ -140,6 +140,7 @@ toggelModal=() =>{
         });
         console.log(this.state.email);
         sesmailfunctionality(this.state.email);
+        console.log('in mail');
         window.location.reload();
       } else {
         console.log("please check the delete function");
