@@ -1,0 +1,22 @@
+.disply_p{
+    display: flex;
+    border-top: brown 1px solid;
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+.color_text{
+    color: #fff !important;
+}
+.margin_left_upload{
+    margin-left: 25% !important;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.text_center{
+    text-align: center;
+}
+.admin_box{
+    margin-top: 5%;
+    height: 450px;
+    overflow-y: auto;
+}
