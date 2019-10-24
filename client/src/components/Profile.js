@@ -90,7 +90,7 @@ toggelModal=() =>{
       .then(data => {
         console.log(data);
         var d = new Date();
-        
+       
         let savefileinfo = {
           Email_id: this.state.email,
           File_description: data.key,
@@ -115,7 +115,7 @@ toggelModal=() =>{
         this.setState({
           inputKey: Date.now()
         });
-        window.location.reload();
+        window.location.reload(true);
       })
       .catch(err => {
         alert(err);
@@ -141,7 +141,7 @@ toggelModal=() =>{
         console.log(this.state.email);
         sesmailfunctionality(this.state.email);
         console.log('in mail');
-        window.location.reload();
+        window.location.reload(true);
       } else {
         console.log("please check the delete function");
       }
@@ -158,7 +158,7 @@ toggelModal=() =>{
 
 
 
-    window.location.reload();    
+    window.location.reload(true);    
 
     //console.log(event.target.parentElement.parentElement.id);
   };
@@ -209,10 +209,10 @@ toggelModal=() =>{
           <button className="btn btn-secondary" onClick={this.toggelModal}>Cancel</button>
         </ModalFooter>
       </Modal>
-        <div className="col-md-6 margin_left_upload">
+        <div className="pad_shift col-md-12 margin_left_upload_1">
           <div className="form-group files">
-            <label>Upload Your File </label>
-            <input
+            <label className="padding_right">Upload Your File </label>
+            <input className="btn-block"
               type="file"
               name="file"
               onChange={this.onChange}
@@ -228,9 +228,36 @@ toggelModal=() =>{
           </button>
         </div>
         <div className="col-md-12">
+        <div className="disply_p adding_pad">
+              <div className="col-md-4">
+                <b>File Name</b>
+              </div>
+              <div className="col-md-2">
+                <b>
+                  Download
+                </b>
+              </div>
+              <div className="col-md-2">
+                <b >Update</b>
+              </div>
+              <div className="col-md-1">
+                <b>
+                  Delete
+                </b>
+              </div>
+              <div className="col-md-3 padding_upload">
+                <b>Upload File Time</b>
+              </div>
+            </div>
+
+
+
+
+
           {this.state.allretuenfiles.map(response => (
+            
             <div id={response.File_description} className="disply_p" key={response.idUser_file_details}>
-              <div className="col-md-5">
+              <div className="col-md-4">
                 <b>{response.File_description}</b>
               </div>
               <div className="col-md-2">
@@ -246,13 +273,16 @@ toggelModal=() =>{
               <div id={response.idUser_file_details} className="col-md-2">
                 <a className="btn btn-info color_text" onClick={this.toggelModal}>Update</a>
               </div>
-              <div className="col-md-2">
+              <div className="col-md-1">
                 <a id={response.idUser_file_details}
                   className="btn btn-danger color_text"
                   onClick={this.ondeleteclick}
                 >
                   Delete
                 </a>
+              </div>
+              <div className="col-md-3 padding_upload">
+                <b>{response.File_upload_time}</b>
               </div>
             </div>
           ))}
