@@ -91,6 +91,34 @@ userfilereturn.get("/admin", (req, res) => {
 
 
 
+userfilereturn.post("/updatedatabase", (req, res) => {
+  const today = new Date();
+  
+
+   let sk=req.body.idUser_file_details;
+   console.log(sk);
+   FileUserDetails.update({
+    File_updated_time: today.toDateString()+" "+today.getHours() +":"+today.getMinutes()+":" +today.getSeconds()
+  }, {
+    where: {
+      idUser_file_details: sk
+    }
+  })
+  .then(response => {
+    if (response) {
+     console.log(response);
+    // response.send('fileupadate');
+     
+     res.send(response);
+    } else {
+     console.log("problem in deleteing");
+    }
+  })
+  .catch(err => {
+    console.log("error: " + err);
+  });
+
+});
 
 
 module.exports = userfilereturn;

@@ -149,3 +149,22 @@ export const returnallfiles =  async emailid => {
    }
   // console.log(response);
  };
+
+
+ 
+ export const updatedatabase =  async (idfileupdate) => {
+  console.log('in updatefile userfunction.js', idfileupdate);
+  try {
+     const response = await axios
+       .post("returnfiles/updatedatabase", {
+         
+           idUser_file_details: idfileupdate
+         
+       });
+      return response;
+   }
+   catch (err) {
+     console.log(err);
+     alert(err);
+   }
+ };

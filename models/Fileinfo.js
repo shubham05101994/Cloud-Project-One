@@ -23,17 +23,17 @@ module.exports = db.sequelize.define(
       allowNull: false
     },
     File_upload_time: {
-      type: Sequelize.DATE,
-      defaultValue: Sequelize.NOW
+      type: Sequelize.TEXT,
+      //defaultValue: Sequelize.NOW
     },
     File_updated_time: {
-      type: Sequelize.DATE
+      type: Sequelize.TEXT
     },
     File_delete_flag: {
       type: Sequelize.INTEGER
     },
     File_deleted_time: {
-      type: Sequelize.DATE
+      type: Sequelize.TEXT
     },
     File_Update_flag: {
       type: Sequelize.INTEGER

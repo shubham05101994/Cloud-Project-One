@@ -5,6 +5,7 @@ import { returnallfiles } from "./UserFunctions";
 import { deletefile } from "./UserFunctions";
 import { deletefilefromdatabase } from "./UserFunctions";
 import { sesmailfunctionality } from "./UserFunctions";
+import { updatedatabase } from "./UserFunctions";
 import ReactS3 from "react-s3";
 import {Modal,ModalHeader,ModalBody,ModalFooter} from 'reactstrap';
 import "./sh.css";
@@ -27,7 +28,8 @@ class Profile extends Component {
       inputKey: Date.now(),
       errors: {},
       allretuenfiles: [],
-      modalIsOpen : false
+      modalIsOpen : false,
+      updated_file_id: ""
     };
     //this.onChange = this.onChange.bind(this);
     //this.onClick = this.onClick.bind(this);
@@ -36,10 +38,13 @@ class Profile extends Component {
   }
 
 
-toggelModal=() =>{
+toggelModal=(event) =>{
+  //let a=event.target.id;
   this.setState({
-    modalIsOpen : !this.state.modalIsOpen
+    modalIsOpen : !this.state.modalIsOpen,
+    updated_file_id: event.target.id
   });
+ // console.log('updated id ',a);
 }
 
   componentDidMount() {
@@ -97,7 +102,7 @@ toggelModal=() =>{
           Download_link: "http://d1i5sdxfmrzbaf.cloudfront.net/" + data.key,
           File_upload_time: d.toUTCString(),
           File_updated_time: d.toUTCString(),
-          File_delete_flag: 1,
+          File_delete_flag: 1,  
           File_deleted_time: d.toUTCString(),
           File_Update_flag: 1
         };
@@ -115,7 +120,7 @@ toggelModal=() =>{
         this.setState({
           inputKey: Date.now()
         });
-        window.location.reload(true);
+        window.location.reload();
       })
       .catch(err => {
         alert(err);
@@ -141,7 +146,7 @@ toggelModal=() =>{
         console.log(this.state.email);
         sesmailfunctionality(this.state.email);
         console.log('in mail');
-        window.location.reload(true);
+        window.location.reload();
       } else {
         console.log("please check the delete function");
       }
@@ -150,15 +155,30 @@ toggelModal=() =>{
     //console.log(event.target.parentElement.parentElement.id);
   };
 
-  onUpdateclick = event => {
+  onUpdateclick = () => {
+   
+    let updatefileid=this.state.updated_file_id;
     ReactS3.uploadFile(this.state.selectedFile, config)
-    .then(data => {
-      alert('update successful');
+    .then(response => {
+      
+      updatedatabase(updatefileid)
+        .then(res => {
+          if (res) {
+            alert("update successful");
+            window.location.reload(); 
+          } else {
+            console.log("please check the file update function");
+          }
+        });
+     
     })
+    .catch(err => {
+      alert(err);
+    });
 
 
 
-    window.location.reload(true);    
+  //     
 
     //console.log(event.target.parentElement.parentElement.id);
   };
@@ -229,7 +249,7 @@ toggelModal=() =>{
         </div>
         <div className="col-md-12">
         <div className="disply_p adding_pad">
-              <div className="col-md-4">
+              <div className="col-md-3">
                 <b>File Name</b>
               </div>
               <div className="col-md-2">
@@ -245,8 +265,11 @@ toggelModal=() =>{
                   Delete
                 </b>
               </div>
-              <div className="col-md-3 padding_upload">
+              <div className="col-md-2 padding_upload">
                 <b>Upload File Time</b>
+              </div>
+              <div className="col-md-2 padding_upload">
+                <b>Updated File Time</b>
               </div>
             </div>
 
@@ -257,7 +280,7 @@ toggelModal=() =>{
           {this.state.allretuenfiles.map(response => (
             
             <div id={response.File_description} className="disply_p" key={response.idUser_file_details}>
-              <div className="col-md-4">
+              <div className="col-md-3">
                 <b>{response.File_description}</b>
               </div>
               <div className="col-md-2">
@@ -270,8 +293,8 @@ toggelModal=() =>{
                   Download
                 </a>
               </div>
-              <div id={response.idUser_file_details} className="col-md-2">
-                <a className="btn btn-info color_text" onClick={this.toggelModal}>Update</a>
+              <div className="col-md-2">
+                <a id={response.idUser_file_details} className="btn btn-info color_text" onClick={this.toggelModal}>Update</a>
               </div>
               <div className="col-md-1">
                 <a id={response.idUser_file_details}
@@ -281,8 +304,12 @@ toggelModal=() =>{
                   Delete
                 </a>
               </div>
-              <div className="col-md-3 padding_upload">
+              <div className="col-md-2 padding_upload">
                 <b>{response.File_upload_time}</b>
+              </div>
+              
+              <div className="col-md-2 padding_upload">
+                <b>{response.File_updated_time}</b>
               </div>
             </div>
           ))}

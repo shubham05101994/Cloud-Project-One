@@ -65,7 +65,7 @@ class Admin extends Component {
             <div className="col-md-3">
               <b>File Description</b>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-2">
               <b>Email id</b>
             </div>
 
@@ -80,8 +80,11 @@ class Admin extends Component {
                 Delete
               </b>
             </div>
-            <div className="col-md-3 padding_upload">
+            <div className="col-md-2 padding_upload">
               <b>File Upload time</b>
+            </div>
+            <div className="col-md-2 padding_upload">
+              <b>File Update time</b>
             </div>
           </div>
 
@@ -94,7 +97,7 @@ class Admin extends Component {
               <div className="col-md-3">
                 <b>{response.File_description}</b>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <b>{response.Email_id}</b>
               </div>
 
@@ -117,8 +120,11 @@ class Admin extends Component {
                   Delete
                 </a>
               </div>
-              <div className="col-md-3 padding_upload">
+              <div className="col-md-2 padding_upload">
                 <b>{response.File_upload_time}</b>
+              </div>
+              <div className="col-md-2 padding_upload">
+                <b>{response.File_updated_time}</b>
               </div>
             </div>
           ))}

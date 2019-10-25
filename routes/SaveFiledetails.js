@@ -10,10 +10,10 @@ userfiledetials.post("/", (req, res) => {
         Email_id: req.body.Email_id,
         File_description: req.body.File_description,
         Download_link: req.body.Download_link,
-        File_upload_time: req.body.File_upload_time,
-        File_updated_time: req.body.File_updated_time,
+        File_upload_time:today.toDateString()+" "+today.getHours() +":"+today.getMinutes()+":" +today.getSeconds(),
+        File_updated_time: today.toDateString()+" "+today.getHours() +":"+today.getMinutes()+":" +today.getSeconds(),
         File_delete_flag:req.body.File_delete_flag,
-        File_deleted_time:req.body.File_deleted_time,
+        File_deleted_time:today.toDateString()+" "+today.getHours() +":"+today.getMinutes()+":" +today.getSeconds(),
         File_Update_flag:req.body.File_Update_flag
     };
   
