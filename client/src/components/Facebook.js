@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FacebookLogin from "react-facebook-login";
-
+import "./sh.css"
 import { Redirect } from "react-router";
 //import PropTypes from 'prop-types';
 
@@ -42,7 +42,7 @@ class Facebook extends Component {
 
     if (this.state.isLoggedIn) {
       fbContent = (
-        <div
+        <div 
           style={{
             width: "400px",
             margin: "auto",
@@ -66,7 +66,7 @@ class Facebook extends Component {
       );
     }
 
-    return <div>{fbContent}</div>;
+    return <div className="fb">{fbContent}</div>;
   }
 }
 

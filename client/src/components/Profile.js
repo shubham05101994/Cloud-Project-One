@@ -88,10 +88,13 @@ toggelModal=(event) =>{
     this.setState({
       selectedFile: event.target.files[0]
     });
-    console.log(this.state.selectedFile);
+    //console.log(this.state.selectedFile);
   };
   onClick = e => {
-    ReactS3.uploadFile(this.state.selectedFile, config)
+   // console.log('please check file info ',this.state.selectedFile.size);
+    let size=this.state.selectedFile.size;
+    if(size<10485760){
+      ReactS3.uploadFile(this.state.selectedFile, config)
       .then(data => {
         console.log(data);
         var d = new Date();
@@ -125,6 +128,14 @@ toggelModal=(event) =>{
       .catch(err => {
         alert(err);
       });
+    }
+    else{
+      alert("Please upload file less than 10MB");
+    }
+
+
+
+    
     this.setState({
       inputKey: Date.now()
     });
@@ -186,7 +197,8 @@ toggelModal=(event) =>{
   render() {
     return (
       <div className="container">
-       <div className="jumbotron mt-5">
+        <div>
+       <div className="col-md-6 col-sm-6 jumbotron mt-5 mx-auto">
           <div className="col-sm-8 mx-auto">
             <h1 className="text-center">PROFILE</h1>
           </div>
@@ -194,18 +206,19 @@ toggelModal=(event) =>{
             <tbody>
               <tr>
                 <td>Fist Name</td>
-                <td>{this.state.first_name}</td>
+                <td className="table_font">{this.state.first_name}</td>
               </tr>
               <tr>
                 <td>Last Name</td>
-                <td>{this.state.last_name}</td>
+                <td className="table_font">{this.state.last_name}</td>
               </tr>
               <tr>
                 <td>Email</td>
-                <td>{this.state.email}</td>
+                <td className="table_font">{this.state.email}</td>
               </tr>
             </tbody>
           </table>
+        </div>
         </div>
       <Modal isOpen={this.state.modalIsOpen}>
         <ModalHeader toggle={this.toggelModal}>Upload file again</ModalHeader>

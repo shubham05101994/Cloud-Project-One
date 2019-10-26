@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
+import "./sh.css"
 class Landing extends Component {
   logOut(e) {
     e.preventDefault();
@@ -54,7 +54,7 @@ class Landing extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+      <nav className="navbar navbar-expand-lg navbar-dark nav_color navcolo rounded">
         <button
           className="navbar-toggler"
           type="button"
