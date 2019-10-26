@@ -4,11 +4,14 @@ class Landing extends Component {
   render() {
     return (
       <div className="container">
-        <div className="jumbotron mt-4">
+        <div className="jumbotron color_back mt-4">
           <div className="col-sm-8 mx-auto">
+          
             <h4 className="text-center">WELCOME TO</h4>
-            <h1 className="text-center name_app">Universal File Uploader</h1>
-
+            <div>
+            
+            <h1 className="text-center name_app"><img src="flash.png" alt="Smiley face" height="42" width="42"></img>Flash File Uploader</h1>
+            </div>
           </div>
         </div>
         <div className="jumbotron mt-4">

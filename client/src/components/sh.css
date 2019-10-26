@@ -46,6 +46,9 @@
     text-align: center;
     margin-top: 2%;
 }
+.color_back{
+    background-color: white;
+}
 .break{
     word-break: break-all;
 }
