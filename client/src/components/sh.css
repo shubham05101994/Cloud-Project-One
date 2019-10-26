@@ -46,6 +46,9 @@
     text-align: center;
     margin-top: 2%;
 }
+.break{
+    word-break: break-all;
+}
 .fb > span > button{
     border-radius:8px !important;
 }

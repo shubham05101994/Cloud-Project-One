@@ -293,7 +293,7 @@ toggelModal=(event) =>{
           {this.state.allretuenfiles.map(response => (
             
             <div id={response.File_description} className="disply_p" key={response.idUser_file_details}>
-              <div className="col-md-3">
+              <div className="col-md-3 break">
                 <b>{response.File_description}</b>
               </div>
               <div className="col-md-2">
@@ -317,11 +317,11 @@ toggelModal=(event) =>{
                   Delete
                 </a>
               </div>
-              <div className="col-md-2 padding_upload">
+              <div className="col-md-2 padding_upload break">
                 <b>{response.File_upload_time}</b>
               </div>
               
-              <div className="col-md-2 padding_upload">
+              <div className="col-md-2 padding_upload break">
                 <b>{response.File_updated_time}</b>
               </div>
             </div>
