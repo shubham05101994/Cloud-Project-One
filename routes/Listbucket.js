@@ -17,7 +17,7 @@ listbucket.get("/bucketlist", (req, res) => {
   });
 
   var params = {
-    Bucket: "imagesforuploadanddownload",
+    Bucket: "",
     MaxKeys: 2
   };
   s3.listObjects(params, function(err, data) {
@@ -27,7 +27,7 @@ listbucket.get("/bucketlist", (req, res) => {
   });
 
   var params = {
-    Bucket: "imagesforuploadanddownload"
+    Bucket: ""
   };
   s3.getBucketLocation(params, function(err, data) {
     if (err) console.log(err, err.stack);
