@@ -116,7 +116,7 @@ export const returnallfiles =  async emailid => {
   console.log('in sesemailfunctionality', email);
   try {
      const response = await axios
-       .get("https://77k3rsl8sb.execute-api.us-east-1.amazonaws.com/prod/sesdeleteemail", {
+       .get("", {
          params: {
            email: email
          }
