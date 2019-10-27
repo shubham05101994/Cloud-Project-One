@@ -32,7 +32,7 @@ userfilereturn.get("/", (req, res) => {
 userfilereturn.get("/delete", (req, res) => {
 
   var params = {
-    Bucket: "imagesforuploadanddownload", 
+    Bucket: "", 
     Key: req.query.key
    };
    s3.deleteObject(params, function(err, data) {
