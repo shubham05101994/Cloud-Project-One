@@ -11,10 +11,10 @@ import {Modal,ModalHeader,ModalBody,ModalFooter} from 'reactstrap';
 import "./sh.css";
 
 const config = {
-  bucketName: "imagesforuploadanddownload",
-  region: "us-west-1",
-  accessKeyId: "AKIAJPQOJWFVPS6II5WA",
-  secretAccessKey: "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"
+  bucketName: "",
+  region: "",
+  accessKeyId: "",
+  secretAccessKey: ""
 };
 
 class Profile extends Component {
